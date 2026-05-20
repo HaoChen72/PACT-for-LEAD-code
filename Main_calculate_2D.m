@@ -4,7 +4,7 @@
 % Input: Set root_path
 
 %% Initialization Settings
-root_path = 'K:\footData\'; % Modify to your data path
+root_path = 'C:\Users\chnzi\Desktop\PACT-for-LEAD-code-main\exampleData\'; % Modify to your data path
 clc;
 close all force;
 warning('off','images:initSize:adjustingMag'); % Disable image-related warnings
@@ -30,9 +30,9 @@ for primary_idx = 1:total_primary
                                primary_list(primary_idx).name);
     
     % Locate 3D_str directory in secondary subfolders
-    secondary_path = fullfile(current_primary, '3D_str');
+    secondary_path = fullfile(current_primary, 'data');
     if ~isfolder(secondary_path)
-        fprintf('[WARNING] Skipping directory missing 3D_str: %s\n', current_primary);
+        fprintf('[WARNING] Skipping directory missing data: %s\n', current_primary);
         continue;
     end
     
@@ -94,7 +94,7 @@ end % End of primary folder loop
 
 %% Save Results Summary Table to Excel
 if ~isempty(results_summary)
-    excel_file = fullfile(root_path, 'vessel_analysis_2D_divide.xlsx');
+    excel_file = fullfile(root_path, 'vessel_analysis_2D.xlsx');
     writetable(results_summary, excel_file);
     fprintf('\nResults summary table saved to: %s\n', excel_file);
 else
